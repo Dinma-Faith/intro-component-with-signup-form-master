@@ -1,0 +1,102 @@
+.container {
+  background-color: white;
+  border-radius: 10px;
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  /* max-width: 320px;
+  width: 100%; */
+  padding: 25px;
+  color: black;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+  }
+
+  .description {
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    font-size: 13px;
+    margin-bottom: 2rem;
+  }
+
+  .offer {
+    background-color: var(--blue);
+    color: white;
+    padding-block: 0.6rem;
+    padding-inline: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .offer span {
+    font-weight: var(--font-weight-regular);
+    font-size: 10px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  input {
+    padding: 0.75rem;
+    border: 1px solid var(--grayish-blue);
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    transition: border 0.3s, box-shadow 0.3s;
+    font-weight: var(--font-weight-bold);
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--grayish-blue);
+    box-shadow: 0 0 0 2px rgba(80, 84, 255, 0.2);
+  }
+
+  input:hover {
+    border-color: var(--dark-blue);
+  }
+
+  input::placeholder {
+    color: gray;
+  }
+
+  button {
+    background-color: var(--green);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: hsl(154, 59%, 45%);
+  }
+
+  .terms {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: var(--grayish-blue);
+  }
+
+  .terms span {
+    color: var(--red);
+    font-weight: var(--font-weight-medium);
+  }
