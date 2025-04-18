@@ -6,7 +6,6 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
   let hasError = false;
 
-  // Clear previous errors first
   fields.forEach(field => {
     const input = document.getElementById(field);
     const error = document.getElementById(field + "Error");
@@ -14,7 +13,6 @@ form.addEventListener("submit", function (e) {
     input.classList.remove("error");
   });
 
-  // Validate empty fields
   fields.forEach(field => {
     const input = document.getElementById(field);
     const error = document.getElementById(field + "Error");
@@ -25,7 +23,6 @@ form.addEventListener("submit", function (e) {
     }
   });
 
-  // Email format check
   const emailInput = document.getElementById("email");
   const emailError = document.getElementById("emailError");
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
