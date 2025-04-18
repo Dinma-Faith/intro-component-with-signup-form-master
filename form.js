@@ -9,12 +9,17 @@ form.addEventListener("submit", function (e) {
   fields.forEach(field => {
     const input = document.getElementById(field);
     const error = document.getElementById(field + "Error");
+    error.textContent = "";
+    input.classList.remove("error");
+  });
+
+  fields.forEach(field => {
+    const input = document.getElementById(field);
+    const error = document.getElementById(field + "Error");
 
     if (!input.value.trim()) {
       error.textContent = `${input.placeholder} cannot be empty.`;
       hasError = true;
-    } else {
-      error.textContent = "";
     }
   });
 
@@ -23,18 +28,23 @@ form.addEventListener("submit", function (e) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (emailInput.value && !emailPattern.test(emailInput.value)) {
-    emailError.textContent = "Looks like this is not a valid email.";
+    emailError.textContent = "Looks like this is not an email";
+    emailInput.classList.add("error");
     hasError = true;
   }
 
   if (hasError) {
     fields.forEach(field => {
-      document.getElementById(field).classList.add("error");
+      const input = document.getElementById(field);
+      input.classList.add("error");
     });
 
     submitButton.classList.add("disabled");
     submitButton.disabled = true;
   } else {
+    alert("Form submitted successfully!");
+    form.reset();
+
     fields.forEach(field => {
       const input = document.getElementById(field);
       const error = document.getElementById(field + "Error");
@@ -44,8 +54,5 @@ form.addEventListener("submit", function (e) {
 
     submitButton.classList.remove("disabled");
     submitButton.disabled = false;
-
-    alert("Form submitted successfully!");
-    form.reset();
   }
 });
