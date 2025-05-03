@@ -1,10 +1,11 @@
 import React from "react";
-import SignupForm from "./components/SignupForm";
+import Form from "./components/form";
+
 
 export default function App() {
   return (
     <>
-      <SignupForm />
+    <Form />
     </>
   );
 }

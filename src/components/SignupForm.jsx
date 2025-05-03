@@ -1,45 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/styles.css";
 
 const SignupForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.firstName.trim()) newErrors.firstName = "First Name cannot be empty";
+    if (!formData.lastName.trim()) newErrors.lastName = "Last Name cannot be empty";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email cannot be empty";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Looks like this is not an email";
+    }
+
+    if (!formData.password.trim()) newErrors.password = "Password cannot be empty";
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      alert("Form submitted successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
   return (
-    <div className="main-layout">
-      <div className="intro">
-        <h1 className="form-title">Learn to code by watching others</h1>
-        <p className="description">
-          See how experienced developers solve problems in real-time. Watching
-          scripted tutorials is great, but understanding how developers think is
-          invaluable.
-        </p>
-      </div>
+    <form id="signupForm" onSubmit={handleSubmit} noValidate>
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={formData.firstName}
+          onChange={handleChange}
+          className={errors.firstName ? "error" : ""}
+        />
+        {errors.firstName && <p className="error-message">{errors.firstName}</p>}
 
-      <div className="form-section">
-        <div className="offer">
-          Try it free 7 days <span> then $20/mo. thereafter</span>
-        </div>
-        <div className="container">
-          <form id="signupForm">
-            <input type="text" id="firstName" placeholder="First Name" />
-            <p className="error-message" id="firstNameError"></p>
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formData.lastName}
+          onChange={handleChange}
+          className={errors.lastName ? "error" : ""}
+        />
+        {errors.lastName && <p className="error-message">{errors.lastName}</p>}
 
-            <input type="text" id="lastName" placeholder="Last Name" />
-            <p className="error-message" id="lastNameError"></p>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          value={formData.email}
+          onChange={handleChange}
+          className={errors.email ? "error" : ""}
+        />
+        {errors.email && <p className="error-message">{errors.email}</p>}
 
-            <input type="email" id="email" placeholder="Email Address" />
-            <p className="error-message" id="emailError"></p>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          className={errors.password ? "error" : ""}
+        />
+        {errors.password && <p className="error-message">{errors.password}</p>}
 
-            <input type="password" id="password" placeholder="Password" />
-            <p className="error-message" id="passwordError"></p>
-
-            <button type="submit">CLAIM YOUR FREE TRIAL</button>
-          </form>
-          <p className="terms">
-            By clicking the button, you are agreeing to our
-            <span>Terms and Services</span>
-          </p>
-        </div>
-      </div>
-    </div>
+      <button type="submit">CLAIM YOUR FREE TRIAL</button>
+    </form>
   );
 };
 
