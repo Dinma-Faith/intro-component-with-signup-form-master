@@ -19,12 +19,12 @@
 
 body {
   font-family: "Poppins", sans-serif;
-      font-size: 16px;
-      background-size: cover;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: var(--red);
+  font-size: 16px;
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--red);
 }
